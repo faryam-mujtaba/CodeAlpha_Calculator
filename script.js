@@ -10,6 +10,29 @@ buttons.forEach((button) => {
   });
 });
 
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+
+  if (
+    (key >= "0" && key <= "9") ||
+    key === "+" ||
+    key === "-" ||
+    key === "*" ||
+    key === "/" ||
+    key === "." ||
+    key === "%"
+  ) {
+    handleInput(key);
+  } else if (key === "Enter") {
+    event.preventDefault();
+    handleInput("=");
+  } else if (key === "Backspace") {
+    handleInput("DEL");
+  } else if (key === "Escape") {
+    handleInput("C");
+  }
+});
+
 function handleInput(value) {
   if (value === "C") {
     clearDisplay();
@@ -23,7 +46,19 @@ function handleInput(value) {
 }
 
 function appendValue(value) {
-  currentInput += value;
+  const operators = ["+", "-", "*", "/", "%"];
+  const lastChar = currentInput.slice(-1);
+
+  if (operators.includes(value) && currentInput === "") {
+    return;
+  }
+
+  if (operators.includes(value) && operators.includes(lastChar)) {
+    currentInput = currentInput.slice(0, -1) + value;
+  } else {
+    currentInput += value;
+  }
+
   display.value = currentInput;
 }
 
