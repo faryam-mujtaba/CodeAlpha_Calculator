@@ -2,6 +2,10 @@
 
 This is a basic calculator web application created as part of the CodeAlpha Frontend Development Internship.
 
+## Live Demo
+
+[View Live Project](https://faryam-mujtaba.github.io/CodeAlpha_Calculator/)
+
 ## Project Description
 
 The calculator is built using HTML, CSS, and JavaScript. It performs basic arithmetic operations and provides a clean, responsive user interface.
